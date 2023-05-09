@@ -1,0 +1,67 @@
+/*** COLOR ***/
+/*** TRANSITION SPEED ***/
+/*** FONT FAMILIES ***/
+/*** ANIMATIONS ***/
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeExpand {
+  0% {
+    opacity: 0;
+    max-height: 0;
+  }
+  100% {
+    opacity: 1;
+    max-height: 100vh;
+  }
+}
+/*** FORMATTING ***/
+.BinSelector {
+  display: flex;
+  flex-flow: row;
+  justify-content: flex-start;
+  align-items: stretch;
+  padding: 0.8rem 1.6rem;
+  gap: 0.4rem;
+  height: 2rem;
+  box-sizing: content-box;
+}
+.BinSelector .bin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.8rem;
+}
+
+/*** TYPOGRAPHY ***/
+.BinSelector .bin .bin__text {
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: hsl(262, 10%, 60%);
+  user-select: none;
+}
+.BinSelector .bin.active .bin__text, .BinSelector .bin:hover .bin__text {
+  color: hsl(262, 10%, 85%);
+}
+
+/*** DECORATION ***/
+.BinSelector .bin {
+  border: 0.08rem solid hsl(262, 10%, 34%);
+  border-radius: 2rem;
+  background-color: hsla(262, 8%, 33%, 0);
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+.BinSelector .bin.active, .BinSelector .bin:hover {
+  background-color: hsl(262, 10%, 34%);
+}
+.BinSelector .bin.active {
+  border: 0.08rem solid hsl(262, 10%, 60%);
+}
+
+/*** RESPONSIVE ***/

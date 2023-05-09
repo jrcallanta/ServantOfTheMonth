@@ -1,0 +1,251 @@
+/*** COLOR ***/
+/*** TRANSITION SPEED ***/
+/*** FONT FAMILIES ***/
+/*** ANIMATIONS ***/
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeExpand {
+  0% {
+    opacity: 0;
+    max-height: 0;
+  }
+  100% {
+    opacity: 1;
+    max-height: 100vh;
+  }
+}
+/*** FORMATTING ***/
+.Survey {
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 3.6rem;
+}
+.Survey .instruction,
+.Survey .feedback,
+.Survey .container {
+  width: 75%;
+  min-width: 27rem;
+  max-width: 36rem;
+}
+.Survey .instruction,
+.Survey .feedback {
+  z-index: 1;
+}
+.Survey .container {
+  position: relative;
+  display: flex;
+  flex-flow: column;
+  padding: 3rem 2.4rem;
+  gap: 3.2rem;
+}
+.Survey .container .border::before,
+.Survey .container .border::after {
+  content: "";
+  position: absolute;
+  height: 200%;
+  width: calc(200% + var(--lineCount) * 20%);
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+}
+.Survey .container .border::after {
+  z-index: 1;
+}
+.Survey .container .inputField {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  overflow: visible;
+}
+.Survey .container .inputField label {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.4rem;
+}
+.Survey .container .inputField input,
+.Survey .container .inputField textarea {
+  width: 100%;
+  line-height: 5.2rem;
+}
+.Survey .container .inputField input {
+  height: 2rem;
+}
+.Survey .container .inputField [name=reason] {
+  padding-top: 0;
+  transform: translateY(-1.6rem);
+  min-height: calc(var(--lineCount) * 5.2rem);
+}
+.Survey .container .inputField .line {
+  pointer-events: none;
+  position: absolute;
+  height: 1px;
+  width: 100%;
+  left: 0;
+  top: calc((var(--n) + 1) * 2rem + var(--n) * 3.2rem + 0.4rem);
+}
+.Survey .container .inputField .line::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+/*** TYPOGRAPHY ***/
+.Survey .container .inputField label {
+  font-family: "Cinzel", serif;
+  font-size: 1.2rem;
+  line-height: 1.2rem;
+  color: hsla(261, 89%, 75%, 0.75);
+}
+.Survey .container .inputField input,
+.Survey .container .inputField textarea {
+  font-family: "Cinzel Decorative", cursive;
+  font-size: 1.6rem;
+  vertical-align: text-top;
+  color: hsl(0, 0%, 56%);
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.Survey .container .inputField:has(:focus) label {
+  color: hsl(261, 89%, 85%);
+}
+.Survey .container .inputField:has(:focus) input,
+.Survey .container .inputField:has(:focus) textarea {
+  color: hsl(0, 0%, 79%);
+}
+.Survey .instruction,
+.Survey .feedback {
+  font-family: "Cinzel", serif;
+  font-size: 1.4rem;
+  text-align: center;
+  color: hsl(261, 89%, 90%);
+  text-shadow: 0 0 1.6rem hsl(0, 0%, 0%), 0 0 1.6rem hsl(0, 0%, 0%), 0 0 0.8rem hsl(0, 0%, 0%), 0 0 0.8rem hsl(0, 0%, 0%);
+}
+.Survey .feedback[data-error=true] {
+  color: hsl(0, 74%, 62%);
+}
+
+/*** DECORATION ***/
+.Survey,
+.Survey .SubmitButton {
+  animation-name: dissolve;
+  animation-duration: 1s;
+  animation-timing-function: ease;
+  animation-fill-mode: backwards;
+}
+.Survey .container {
+  background-color: hsl(258, 16%, 13%);
+}
+.Survey .container .inputField label {
+  transition: all 0.5s ease-out;
+}
+.Survey .container .inputField input,
+.Survey .container .inputField textarea {
+  outline: none;
+  border: none;
+  background: none;
+  resize: none;
+}
+.Survey .container .inputField .line {
+  background-color: hsla(261, 89%, 75%, 0.25);
+  animation-name: animateLine;
+  animation-duration: 1s;
+  animation-timing-function: ease;
+  animation-fill-mode: backwards;
+}
+.Survey .container .inputField .line::after {
+  background-color: hsla(261, 72%, 85%, 0.5);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  transition-delay: calc(var(--n) * 50ms);
+}
+.Survey .container .inputField:has(:focus) .line::after {
+  opacity: 1;
+}
+.Survey .container .border {
+  position: absolute;
+  z-index: -1;
+  left: -2px;
+  top: -2px;
+  right: -2px;
+  bottom: -2px;
+  overflow: hidden;
+  box-shadow: 0 0.8rem 1.6rem hsla(0, 0%, 0%, 0.75), 0 0.4rem 1.6rem hsla(0, 0%, 0%, 0.25);
+}
+.Survey .container .border::before, .Survey .container .border::after {
+  transition: all 0.5s ease;
+}
+.Survey .container .border::before {
+  animation-name: rotate;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  background: linear-gradient(180deg, hsl(261, 12%, 38%) 0%, hsl(262, 12%, 22%) 25%, hsl(260, 15%, 47%) 60%, hsl(247, 59%, 83%) 100%);
+}
+.Survey .feedback {
+  animation-name: dissolveFeedback;
+  animation-duration: 1s;
+  animation-timing-function: ease;
+  animation-fill-mode: backwards;
+}
+.Survey[data-submitted=true] .container {
+  transition: all 2s ease;
+  pointer-events: none;
+  background-color: hsl(258, 16%, 8%);
+}
+.Survey[data-submitted=true] .container > *, .Survey[data-submitted=true] .container::before {
+  transition: all 2s ease;
+  filter: brightness(0.5);
+}
+.Survey[data-submitted=true] .feedback {
+  animation-name: dissolve;
+}
+.Survey[data-error=true] .container .border::before,
+.Survey[data-error=true] .container .border::after {
+  background: hsl(0, 50%, 40%);
+}
+
+/*** RESPONSIVE ***/
+@keyframes animateLine {
+  0% {
+    opacity: 0;
+    box-shadow: 0 0 0.8rem hsla(0, 0%, 100%, 0.8);
+  }
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 1.6rem hsla(0, 0%, 100%, 0);
+  }
+}
+@keyframes dissolveFeedback {
+  0% {
+    max-height: 0;
+    filter: blur(3rem);
+    opacity: 0;
+  }
+  100% {
+    max-height: 2rem;
+    filter: blur(0rem);
+    opacity: 1;
+  }
+}
+@keyframes rotate {
+  0% {
+    rotate: 0deg;
+  }
+  100% {
+    rotate: 360deg;
+  }
+}

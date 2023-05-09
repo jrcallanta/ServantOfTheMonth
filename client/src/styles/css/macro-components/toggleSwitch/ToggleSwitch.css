@@ -1,0 +1,87 @@
+/*** COLOR ***/
+/*** TRANSITION SPEED ***/
+/*** FONT FAMILIES ***/
+/*** ANIMATIONS ***/
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeExpand {
+  0% {
+    opacity: 0;
+    max-height: 0;
+  }
+  100% {
+    opacity: 1;
+    max-height: 100vh;
+  }
+}
+/*** FORMATTING ***/
+.ToggleSwitch {
+  height: 1.6rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0.8rem 1.6rem;
+  cursor: pointer;
+}
+.ToggleSwitch > * {
+  pointer-events: none;
+}
+.ToggleSwitch .slider {
+  height: 100%;
+  width: 3.2rem;
+}
+
+/*** TYPOGRAPHY ***/
+.ToggleSwitch .label {
+  font-size: 1.2rem;
+  line-height: 1.2rem;
+  font-weight: 500;
+  color: hsl(262, 10%, 85%);
+  user-select: none;
+}
+
+/*** DECORATION ***/
+.ToggleSwitch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.ToggleSwitch .slider {
+  background-color: hsl(262, 10%, 43%);
+  border-radius: 2rem;
+  position: relative;
+  box-shadow: inset 0 0 0.8rem hsla(0, 0%, 0%, 0.33);
+  transition: all 0.15s ease-out;
+}
+.ToggleSwitch .slider:after {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: calc(1.6rem - 0px);
+  width: calc(1.6rem - 0px);
+  border-radius: 1.6rem;
+  background-color: hsl(262, 10%, 85%);
+  transition: all 0.15s ease;
+  box-shadow: 0 0 0.8rem hsla(0, 0%, 0%, 0.5);
+}
+.ToggleSwitch input:checked + .slider {
+  background-color: hsl(133, 47%, 33%);
+}
+.ToggleSwitch input:checked + .slider:after {
+  transform: translateX(calc(3.2rem - 100%));
+}
+.ToggleSwitch:hover .slider {
+  background-color: hsl(262, 10%, 60%);
+}
+.ToggleSwitch:hover input:checked + .slider {
+  background-color: hsl(133, 47%, 40%);
+}
+
+/*** RESPONSIVE ***/

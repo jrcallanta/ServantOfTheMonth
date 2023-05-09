@@ -1,0 +1,60 @@
+/*** COLOR ***/
+/*** TRANSITION SPEED ***/
+/*** FONT FAMILIES ***/
+/*** ANIMATIONS ***/
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeExpand {
+  0% {
+    opacity: 0;
+    max-height: 0;
+  }
+  100% {
+    opacity: 1;
+    max-height: 100vh;
+  }
+}
+/*** FORMATTING ***/
+.YearDropDown {
+  padding: 0.8rem 1.6rem;
+  margin-bottom: 0.8rem;
+}
+
+/*** TYPOGRAPHY ***/
+.YearDropDown {
+  color: hsl(262, 10%, 85%);
+  font-family: "Montserrat";
+  font-weight: 500;
+  font-size: 1.6rem;
+  text-align: center;
+}
+.YearDropDown:focus {
+  color: hsl(262, 10%, 85%);
+}
+
+/*** DECORATION ***/
+.YearDropDown {
+  border: none;
+  background: hsla(262, 8%, 33%, 0.25);
+  box-shadow: 0 0.4rem 1.6rem hsla(0, 0%, 0%, 0.25);
+  transition: all 0.15s ease;
+  background: transparent;
+  border-top: 1px solid hsl(262, 8%, 8%);
+  border-bottom: 1px solid hsl(262, 8%, 8%);
+  box-shadow: none;
+}
+.YearDropDown:focus {
+  outline: none;
+  background: hsl(262, 10%, 31%);
+}
+.YearDropDown:focus {
+  background: hsl(262, 10%, 31%);
+}
+
+/*** RESPONSIVE ***/

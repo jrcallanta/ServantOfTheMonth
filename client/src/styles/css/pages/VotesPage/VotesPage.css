@@ -1,0 +1,66 @@
+/*** COLOR ***/
+/*** TRANSITION SPEED ***/
+/*** FONT FAMILIES ***/
+/*** ANIMATIONS ***/
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeExpand {
+  0% {
+    opacity: 0;
+    max-height: 0;
+  }
+  100% {
+    opacity: 1;
+    max-height: 100vh;
+  }
+}
+/*** FORMATTING ***/
+.VotesPage {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  position: relative;
+  overflow: hidden;
+}
+.VotesPage .header {
+  display: flex;
+  flex-flow: column;
+  gap: 0.4rem;
+  padding: 0.4rem 0;
+  z-index: 1;
+}
+.VotesPage .header .filters {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-flow: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+.VotesPage .header .viewSelector {
+  display: flex;
+  height: 3.6rem;
+  justify-content: flex-end;
+  position: relative;
+}
+.VotesPage .body {
+  height: 100%;
+  overflow: hidden;
+  overflow-y: overlay;
+}
+
+/*** TYPOGRAPHY ***/
+/*** DECORATION ***/
+.VotesPage .header {
+  box-shadow: 0 0 1.6rem hsla(0, 0%, 0%, 0.25), 0 0 0.8rem hsla(0, 0%, 0%, 0.25);
+}
+
+/*** RESPONSIVE ***/

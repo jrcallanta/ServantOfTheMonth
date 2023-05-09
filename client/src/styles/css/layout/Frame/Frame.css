@@ -1,0 +1,81 @@
+/*** COLOR ***/
+/*** TRANSITION SPEED ***/
+/*** FONT FAMILIES ***/
+/*** ANIMATIONS ***/
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeExpand {
+  0% {
+    opacity: 0;
+    max-height: 0;
+  }
+  100% {
+    opacity: 1;
+    max-height: 100vh;
+  }
+}
+/*** FORMATTING ***/
+.Frame {
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8rem;
+  padding: 8rem 2rem;
+  height: 100vh;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+.Frame .title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Frame .title.small {
+  display: none;
+}
+.Frame > * {
+  display: block;
+}
+.Frame[data-fullscreen=true] .title {
+  display: none;
+}
+.Frame[data-fullscreen=true] > * {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+/*** TYPOGRAPHY ***/
+/*** DECORATION ***/
+.Frame {
+  transition: all 1s ease;
+}
+.Frame .title {
+  filter: drop-shadow(0 0.4rem 0.8rem #000) drop-shadow(0 0.8rem 1.6rem rgba(0, 0, 0, 0.2666666667));
+  animation-name: fadeExpand;
+  animation-duration: 2s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: backwards;
+}
+.Frame[data-fullscreen=true] {
+  background: hsl(0, 0%, 0%);
+}
+
+/*** REPONSIVE ***/
+@media (max-width: 20em) {
+  .Frame .title {
+    display: none;
+  }
+  .Frame .title.small {
+    display: flex;
+  }
+}

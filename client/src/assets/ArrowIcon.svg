@@ -1,0 +1,7 @@
+<svg width="12" height="10" viewBox="0 0 12 12" fill="none">
+    <defs>
+        <clipPath id="arrow-clip">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M5.91331 0.0889213L6.00095 0L6.08674 0.0889213L11.3572 5.10022L10.3863 6.16071L6.80362 2.75422L6.80362 15L5.19648 15L5.19648 2.75418L1.6138 6.16071L0.642883 5.10022L5.91331 0.0889213Z" fill="white"/>
+        </clipPath>
+    </defs>
+</svg>

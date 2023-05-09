@@ -1,0 +1,130 @@
+/*** COLOR ***/
+/*** TRANSITION SPEED ***/
+/*** FONT FAMILIES ***/
+/*** ANIMATIONS ***/
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeExpand {
+  0% {
+    opacity: 0;
+    max-height: 0;
+  }
+  100% {
+    opacity: 1;
+    max-height: 100vh;
+  }
+}
+::-webkit-scrollbar {
+  width: 8px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsla(262, 12%, 12%, 0.5);
+  transition: all 1s ease;
+}
+
+::-webkit-scrollbar-track:hover {
+  background: hsla(262, 10%, 8%, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsla(262, 12%, 32%, 0.5);
+  border-radius: 20px;
+  transition: all 1s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(262, 10%, 60%);
+}
+
+/*** COLOR ***/
+/*** TRANSITION SPEED ***/
+/*** FONT FAMILIES ***/
+/*** ANIMATIONS ***/
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeExpand {
+  0% {
+    opacity: 0;
+    max-height: 0;
+  }
+  100% {
+    opacity: 1;
+    max-height: 100vh;
+  }
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-size: 63.25%;
+}
+@media (max-width: 20em) {
+  * {
+    font-size: 55%;
+  }
+}
+@media (min-width: 45em) {
+  * {
+    font-size: 60%;
+  }
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+[id=background-root],
+[id=modal-root] {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+}
+
+[id=background-root] {
+  z-index: -1;
+  top: 0;
+  left: 0;
+}
+
+[id=modal-root] {
+  z-index: 1;
+}
+
+[id] {
+  overflow: hidden;
+}
+
+a:link {
+  font-family: "Poppins", "Montserrat", serif;
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: hsl(262, 43%, 63%);
+  padding: 0 0.8rem;
+  text-decoration: none;
+}
+
+a:visited {
+  color: hsl(262, 43%, 50%);
+}
+
+a:focus {
+  border-radius: 8rem;
+  outline-color: hsl(133, 63%, 75%);
+}

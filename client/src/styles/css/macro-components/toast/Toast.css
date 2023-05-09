@@ -1,0 +1,109 @@
+/*** COLOR ***/
+/*** TRANSITION SPEED ***/
+/*** FONT FAMILIES ***/
+/*** ANIMATIONS ***/
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeExpand {
+  0% {
+    opacity: 0;
+    max-height: 0;
+  }
+  100% {
+    opacity: 1;
+    max-height: 100vh;
+  }
+}
+/*** FORMATTING ***/
+.Toast {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.6rem;
+  padding-left: 3.2rem;
+  padding-right: 2.4rem;
+}
+.Toast[data-align=bottom] {
+  bottom: 0;
+}
+.Toast[data-align=top] {
+  top: 0;
+}
+.Toast .close {
+  position: absolute;
+  left: 1.6rem;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+.Toast .close.small {
+  display: none;
+}
+.Toast[data-closed=true] {
+  display: none;
+}
+
+/*** TYPOGRAPHY ***/
+.Toast {
+  font-family: "Poppins", sans-serif;
+  color: hsl(262, 10%, 85%);
+}
+.Toast .message {
+  font-size: 1.4rem;
+  font-weight: 300;
+}
+@media (max-width: 20em) {
+  .Toast .message {
+    font-size: 1.2rem;
+  }
+}
+
+/*** DECORATION ***/
+.Toast {
+  animation: fadeIn 0.5s ease-out;
+  animation-fill-mode: backwards;
+  background-color: var(--color-style);
+}
+.Toast[data-toast-type=error] {
+  --color-style: hsl(0, 50%, 40%);
+}
+.Toast[data-toast-type=notif] {
+  --color-style: hsl(264, 33%, 36%);
+}
+.Toast[data-toast-type=success] {
+  --color-style: rgb(71, 111, 68);
+}
+.Toast .close:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  clip-path: url("#x-clip");
+  background: hsl(262, 10%, 85%);
+}
+
+/*** RESPONSIVE ***/
+@media (max-width: 20em) {
+  .Toast .close {
+    display: none;
+  }
+  .Toast .close.small {
+    display: flex;
+  }
+  .Toast .close.small:before {
+    clip-path: url("#x-clip-small");
+  }
+}

@@ -1,0 +1,163 @@
+/*** COLOR ***/
+/*** TRANSITION SPEED ***/
+/*** FONT FAMILIES ***/
+/*** ANIMATIONS ***/
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeExpand {
+  0% {
+    opacity: 0;
+    max-height: 0;
+  }
+  100% {
+    opacity: 1;
+    max-height: 100vh;
+  }
+}
+/*** FORMATTING ***/
+.SortByDropDown {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-flow: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 100%;
+  padding: 0.8rem 1.6rem;
+  gap: 0.8rem;
+}
+.SortByDropDown .label {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.SortByDropDown .sorts {
+  height: 100%;
+  overflow: hidden;
+}
+.SortByDropDown .sorts .sorts__list {
+  list-style: none;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  transform: translateY(calc(-1 * var(--offset) * 2rem));
+}
+.SortByDropDown .sorts .sorts__list .sort {
+  padding: 0.4rem 0.8rem;
+  height: 2rem;
+  cursor: pointer;
+}
+.SortByDropDown .sorts[data-aria-expanded=true] {
+  height: calc(var(--length) * 2rem);
+}
+.SortByDropDown .sorts[data-aria-expanded=true] .sorts__list {
+  transform: translateY(0);
+}
+.SortByDropDown .sorts[data-aria-expanded=false] .sorts__list .sort:not(.active),
+.SortByDropDown .sorts[data-aria-expanded=false] .sorts__list .sort:not(.active) .sort__text {
+  opacity: 0;
+  overflow: hidden;
+}
+.SortByDropDown .direction {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  height: 2rem;
+  width: 2rem;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/*** TYPOGRAPHY ***/
+.SortByDropDown .label .label__text {
+  font-size: 1.2rem;
+  line-height: 1.2rem;
+  font-weight: 500;
+  color: hsl(262, 10%, 43%);
+  user-select: none;
+}
+.SortByDropDown .sorts .sort .sort__text {
+  font-size: 1.2rem;
+  line-height: 1.2rem;
+  font-weight: 300;
+  color: hsl(262, 10%, 60%);
+  text-align: center;
+  user-select: none;
+  white-space: nowrap;
+  user-select: none;
+}
+.SortByDropDown .sorts[data-aria-expanded=true] .sort .sort__text,
+.SortByDropDown .sorts .sort.active .sort__text {
+  color: hsl(262, 10%, 85%);
+}
+
+/*** DECORATION ***/
+.SortByDropDown {
+  transition: all 0.15s ease;
+}
+.SortByDropDown .sorts {
+  border-radius: 1rem;
+  border: 0.08rem solid hsl(262, 10%, 60%);
+  background-color: hsl(262, 10%, 34%);
+  backdrop-filter: blur(0.6rem);
+  box-shadow: 0.15rem 0.3rem 1rem hsla(262, 10%, 12%, 0.4);
+}
+.SortByDropDown .sorts__list .sort:hover {
+  background-color: hsl(262, 10%, 43%);
+}
+.SortByDropDown .direction {
+  border-radius: 50%;
+  border: 0.08rem solid hsl(262, 10%, 60%);
+  background-color: hsl(262, 10%, 34%);
+}
+.SortByDropDown .direction:hover {
+  background-color: hsl(262, 10%, 43%);
+}
+.SortByDropDown .direction .icon {
+  background-color: hsl(262, 10%, 85%);
+  clip-path: url("#arrow-clip");
+  transition: all 0.15s ease-out;
+  transform-origin: center center;
+}
+.SortByDropDown .direction .icon svg {
+  height: 100%;
+}
+.SortByDropDown .direction .icon.small {
+  display: none;
+}
+.SortByDropDown .direction[data-ascending=false] .icon {
+  transform: rotateX(180deg);
+}
+.SortByDropDown .sorts[data-aria-expanded=true],
+.SortByDropDown .sorts[data-aria-expanded=true] .sorts__list,
+.SortByDropDown .sorts[data-aria-expanded=true] .sorts__list .sort,
+.SortByDropDown .sorts[data-aria-expanded=true] .sorts__list .sort .sort__text {
+  transition: all 0.15s ease-out;
+}
+.SortByDropDown .sorts[data-aria-expanded=false],
+.SortByDropDown .sorts[data-aria-expanded=false] .sorts__list,
+.SortByDropDown .sorts[data-aria-expanded=false] .sorts__list .sort,
+.SortByDropDown .sorts[data-aria-expanded=false] .sorts__list .sort .sort__text {
+  transition: all 0.15s ease-out;
+}
+
+/*** RESPONSIVE ***/
+@media (max-width: 20em) {
+  .SortByDropDown .direction .icon {
+    display: none;
+  }
+  .SortByDropDown .direction .icon.small {
+    display: flex;
+    clip-path: url("#arrow-clip-small");
+  }
+}

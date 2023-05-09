@@ -1,0 +1,88 @@
+/*** COLOR ***/
+/*** TRANSITION SPEED ***/
+/*** FONT FAMILIES ***/
+/*** ANIMATIONS ***/
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeExpand {
+  0% {
+    opacity: 0;
+    max-height: 0;
+  }
+  100% {
+    opacity: 1;
+    max-height: 100vh;
+  }
+}
+/*** FORMATTING ***/
+.MonthCarousel {
+  width: 100%;
+  height: 3.6rem;
+  padding-top: 0.8rem;
+  box-sizing: content-box;
+  overflow: hidden;
+}
+.MonthCarousel .slider {
+  display: flex;
+  flex-flow: row;
+  width: 100%;
+  height: 100%;
+  padding-bottom: 1.6rem;
+  box-sizing: content-box;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+}
+.MonthCarousel .slider .monthItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1.6rem;
+}
+.MonthCarousel .slider .monthItem.active {
+  scroll-snap-align: start;
+}
+
+/*** TYPOGRAPHY ***/
+.MonthCarousel .monthItem .monthItem__text {
+  font-family: "Poppins", sans-serif;
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: hsl(262, 10%, 31%);
+  cursor: pointer;
+  user-select: none;
+}
+.MonthCarousel .monthItem:hover .monthItem__text {
+  color: hsl(262, 10%, 34%);
+}
+.MonthCarousel .monthItem.active .monthItem__text {
+  font-size: 3.2rem;
+  color: hsl(262, 10%, 85%);
+}
+
+/*** DECORATION ***/
+.MonthCarousel .slider {
+  transition: all 0.15s ease-out;
+}
+.MonthCarousel .slider .monthItem .monthItem__text {
+  transition: all 0.15s ease-out;
+}
+
+/*** RESPONSIVE ***/
+@keyframes animateSlider {
+  0% {
+    transform: translateX(100%);
+    gap: 10rem;
+  }
+  90% {
+    transform: translateX(0%);
+  }
+  100% {
+    gap: 0;
+  }
+}

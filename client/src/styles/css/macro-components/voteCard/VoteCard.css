@@ -1,0 +1,318 @@
+/*** COLOR ***/
+/*** TRANSITION SPEED ***/
+/*** FONT FAMILIES ***/
+/*** ANIMATIONS ***/
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeExpand {
+  0% {
+    opacity: 0;
+    max-height: 0;
+  }
+  100% {
+    opacity: 1;
+    max-height: 100vh;
+  }
+}
+/*** FORMATTING ***/
+.VoteCard {
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  margin-bottom: 1.6rem;
+  cursor: pointer;
+}
+.VoteCard__header {
+  padding: 1.6rem;
+  padding-bottom: 0;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 0.4rem;
+}
+.VoteCard__header__start, .VoteCard__header__end {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  gap: 0.8rem;
+}
+.VoteCard__header__start *:nth-child(3), .VoteCard__header__end .date {
+  margin-left: auto;
+}
+.VoteCard__header .nominee {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.VoteCard__header .invalid {
+  padding: 0 0.4rem;
+}
+.VoteCard__header .options {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-flow: row;
+  align-items: stretch;
+}
+.VoteCard__header .options .options__icon {
+  transform: scale(0.9);
+}
+.VoteCard__header .options .options__menu {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-flow: column;
+  align-items: stretch;
+}
+.VoteCard__header .options .options__menu .options__menu__item p {
+  padding: 0.4rem 1.2rem;
+  height: 100%;
+  list-style: none;
+  white-space: nowrap;
+}
+.VoteCard__body {
+  padding: 1.6rem;
+  display: flex;
+  flex-flow: column;
+  max-height: 20rem;
+  overflow: hidden;
+}
+.VoteCard__body .reason {
+  height: 100%;
+}
+.VoteCard__expandButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.8rem 1.6rem;
+}
+.VoteCard[data-aria-expanded=false] .VoteCard__body {
+  max-height: 0rem;
+  padding-bottom: 0;
+  opacity: 0;
+}
+.VoteCard[data-aria-expanded=false] .VoteCard__expandButton .icon {
+  transform: rotateX(180deg);
+}
+.VoteCard[data-cell-view=true] {
+  position: relative;
+  margin-bottom: 0;
+  border-radius: 0;
+  padding: 1.6rem 0.8rem;
+  background-image: none;
+  transition-duration: 0.5s, transform 0.15s;
+  transition-timing-function: ease;
+  transition-delay: calc(var(--i) * 15ms), transform none;
+}
+.VoteCard[data-cell-view=true][data-aria-expanded=false] {
+  padding: 0 0.8rem;
+}
+.VoteCard[data-cell-view=true][data-aria-expanded=false] > *:not(:nth-child(1)), .VoteCard[data-cell-view=true][data-aria-expanded=false] > * > *:not(:nth-child(1)) {
+  max-height: 0;
+  overflow: hidden;
+  padding-top: 0;
+  padding-bottom: 0;
+  opacity: 0;
+}
+.VoteCard[data-cell-view=true] .VoteCard__header {
+  padding: 1.2rem 1.6rem;
+  gap: 0;
+}
+.VoteCard[data-cell-view=true] .VoteCard__header .number {
+  order: 1;
+  width: 3.6rem;
+}
+.VoteCard[data-cell-view=true] .VoteCard__header .nominee {
+  order: 2;
+}
+.VoteCard[data-cell-view=true] .VoteCard__header .invalid {
+  order: 3;
+}
+.VoteCard[data-cell-view=true] .VoteCard__header .options {
+  order: 4;
+}
+.VoteCard[data-cell-view=true]::before, .VoteCard[data-cell-view=true]::after {
+  content: "";
+  z-index: -1;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: all 1s ease;
+}
+.VoteCard[data-cell-view=true]::before {
+  opacity: 0;
+  background: linear-gradient(to bottom right, hsl(252, 11%, 24%) 0%, hsl(262, 11%, 22%) 25%, hsl(274, 11%, 20%) 100%);
+}
+.VoteCard[data-cell-view=true]::after {
+  opacity: 1;
+  background: linear-gradient(to bottom right, hsl(252, 11%, 20%) 0%, hsl(262, 11%, 18%) 25%, hsl(274, 11%, 16%) 100%);
+}
+.VoteCard[data-cell-view=true]:nth-child(odd)::before {
+  opacity: 1;
+}
+.VoteCard[data-cell-view=true]:nth-child(odd)::after {
+  opacity: 0;
+}
+.VoteCard[data-cell-view=true]:hover {
+  filter: brightness(1.8);
+}
+.VoteCard[data-cell-view=true]:hover:nth-child(odd) {
+  filter: brightness(1.4);
+}
+.VoteCard[data-cell-view=true]:hover[data-aria-valid=false] {
+  filter: brightness(1.4);
+}
+
+/*** TYPOGRAPHY ***/
+.VoteCard {
+  font-family: "Poppins", sans-serif;
+}
+.VoteCard__header .nominee {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: hsl(262, 10%, 85%);
+}
+.VoteCard__header .number {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.4rem;
+  line-height: 1.4rem;
+  font-weight: 600;
+  color: hsla(272, 8%, 100%, 0.25);
+}
+.VoteCard__header .invalid {
+  font-size: 1rem;
+  font-weight: 300;
+  color: hsla(272, 8%, 100%, 0.3);
+}
+.VoteCard__header .voter,
+.VoteCard__header .date {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: hsla(272, 8%, 100%, 0.3);
+}
+.VoteCard__header .options__menu__item p {
+  text-align: center;
+  font-size: 1rem;
+  color: hsla(272, 8%, 100%, 0.4);
+  user-select: none;
+}
+.VoteCard__header .options__menu__item.critical p {
+  color: hsl(0, 48%, 57%);
+}
+.VoteCard__header .options__menu__item:hover {
+  color: hsl(272, 8%, 100%);
+}
+.VoteCard__body .reason {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: hsla(272, 8%, 100%, 0.5);
+}
+.VoteCard[data-aria-valid=false] .VoteCard__header .nominee {
+  color: hsla(272, 8%, 100%, 0.35);
+}
+.VoteCard[data-aria-valid=false] .VoteCard__header .voter {
+  color: hsl(262, 10%, 43%);
+}
+
+/*** DECORATION ***/
+.VoteCard {
+  animation-duration: 0.5s;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+  transition: all 0.15s ease;
+  border-radius: 0.8rem;
+  box-shadow: 0rem 0.4rem 0.8rem rgba(0, 0, 0, 0.15);
+  background: linear-gradient(to bottom right, hsl(252, 11%, 19%) 0%, hsl(262, 11%, 18%) 25%, hsl(274, 11%, 16%) 100%);
+}
+.VoteCard__header__start .options {
+  cursor: pointer;
+}
+.VoteCard__header__start .options .options__icon {
+  position: relative;
+  background-color: hsla(272, 8%, 100%, 0.3);
+  clip-path: url("#options-clip");
+}
+.VoteCard__header__start .options .options__menu {
+  box-shadow: 0rem 0.4rem 0.8rem rgba(0, 0, 0, 0.15);
+  background-color: hsl(262, 11%, 25%);
+  border-radius: 1rem;
+  overflow: hidden;
+}
+.VoteCard__header__start .options .options__menu .options__menu__item p {
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+.VoteCard__header__start .options .options__menu .options__menu__item p:hover {
+  background-color: hsl(262, 11%, 35%);
+}
+.VoteCard__header__start .options .options__menu .options__menu__item.critical {
+  background-color: hsl(0, 32%, 26%);
+}
+.VoteCard__header__start .options .options__menu .options__menu__item.critical p:hover {
+  background-color: hsl(0, 32%, 33%);
+}
+.VoteCard__header .invalid {
+  animation: fadeIn 0.15s ease;
+  background-color: hsla(272, 8%, 100%, 0.07);
+  border-radius: 0.4rem;
+}
+.VoteCard__body {
+  transition: all 0.15s ease;
+}
+.VoteCard__expandButton {
+  cursor: pointer;
+}
+.VoteCard__expandButton .icon {
+  transition: all 0.15s ease;
+  background-color: hsla(272, 8%, 100%, 0.6);
+  clip-path: url("#caret-clip");
+}
+.VoteCard[data-aria-valid=false][data-cell-view=false] {
+  background: linear-gradient(to bottom right, hsl(262, 12%, 15.5%) 0%, hsl(262, 12%, 6%) 100%);
+}
+.VoteCard[data-aria-valid=false][data-cell-view=true]:before, .VoteCard[data-aria-valid=false][data-cell-view=true]:after {
+  background: linear-gradient(to bottom right, hsl(262, 12%, 15.5%) 0%, hsl(262, 12%, 6%) 100%);
+}
+.VoteCard[data-removed=true] {
+  animation-name: moveRight;
+}
+.VoteCard[data-aria-valid=false][data-removed=true], .VoteCard[data-deleted=true] {
+  animation-name: moveLeft;
+}
+.VoteCard:hover {
+  filter: brightness(1.08);
+}
+
+/*** RESPONSIVE ***/
+@keyframes moveRight {
+  100% {
+    transform: translateX(150vw);
+    max-height: 0;
+    margin-bottom: 0;
+    opacity: 0;
+    padding: 0;
+  }
+}
+@keyframes moveLeft {
+  100% {
+    transform: translateX(-150vw);
+    max-height: 0;
+    margin-bottom: 0;
+    opacity: 0;
+    padding: 0;
+  }
+}

@@ -1,0 +1,59 @@
+/*** COLOR ***/
+/*** TRANSITION SPEED ***/
+/*** FONT FAMILIES ***/
+/*** ANIMATIONS ***/
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeExpand {
+  0% {
+    opacity: 0;
+    max-height: 0;
+  }
+  100% {
+    opacity: 1;
+    max-height: 100vh;
+  }
+}
+/*** FORMATTING ***/
+.AdminRouter {
+  display: flex;
+  flex-flow: column;
+  align-items: stretch;
+  width: 100%;
+  height: 100%;
+}
+
+/*** TYPOGRAPHY ***/
+.AdminRouter {
+  color: hsl(0, 0%, 90%);
+  font-family: "Josefin Sans";
+}
+.AdminRouter .title {
+  font-size: 2rem;
+}
+
+/*** DECORATION ***/
+.AdminRouter {
+  animation-name: animateDashboard;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  background: linear-gradient(167.99deg, hsl(262, 15%, 13%) 0%, hsl(262, 11%, 12%) 100%);
+}
+
+/*** RESPONSIVE ***/
+@keyframes animateDashboard {
+  0% {
+    opacity: 0;
+    filter: blur(0.5rem);
+  }
+  100% {
+    opacity: 1;
+    filter: none;
+  }
+}

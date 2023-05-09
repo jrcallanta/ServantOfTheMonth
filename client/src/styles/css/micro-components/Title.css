@@ -1,0 +1,97 @@
+/*** COLOR ***/
+/*** TRANSITION SPEED ***/
+/*** FONT FAMILIES ***/
+/*** ANIMATIONS ***/
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeExpand {
+  0% {
+    opacity: 0;
+    max-height: 0;
+  }
+  100% {
+    opacity: 1;
+    max-height: 100vh;
+  }
+}
+/*** FORMATTING ***/
+.Title {
+  height: 16rem;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+/*** TYPOGRAPHY ***/
+.Title h1 {
+  font-family: "Ravenscroft";
+  font-size: 10rem;
+  line-height: 10rem;
+  kerning: none;
+  color: transparent;
+}
+
+/*** DECORATION ***/
+.Title {
+  animation: animateTitle 2s cubic-bezier(0.165, 0.84, 0.44, 1);
+  filter: blur(3rem);
+  opacity: 0;
+  transition: opacity 1s ease-in-out, filter 2s;
+}
+.Title svg {
+  filter: drop-shadow(0 0.5rem 0.35rem rgba(0, 0, 0, 0.75)) drop-shadow(0 0.5rem 0.5rem rgba(0, 0, 0, 0.5));
+}
+.Title svg [id=fog1] {
+  filter: brightness(1.2);
+}
+.Title h1 {
+  opacity: 1;
+  transition: opacity 2s ease-in-out, transform 3s ease-in-out;
+  transform: scale(1, 0.8);
+  background: linear-gradient(to bottom, white, rgba(116, 69, 167, 0.6117647059));
+  background-clip: text;
+  filter: drop-shadow(0 0.5rem 0.5rem rgb(0, 0, 0));
+}
+
+/*** RESPONSIVE ***/
+@media (min-width: 45em) {
+  .Title {
+    height: 27.4rem;
+  }
+  .Title svg {
+    transform: translateX(-10%);
+  }
+}
+
+@keyframes animateTitle {
+  0% {
+    filter: brightness(0.5) blur(3rem);
+    opacity: 0;
+  }
+  100% {
+    filter: brightness(1);
+    opacity: 1;
+  }
+}
+@keyframes animateSvg {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes animateTitleAway {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
