@@ -2,7 +2,7 @@ import { useAuthorizedApi } from "../../tools/useAuthorizedAPI.js";
 import { useFormReducer } from "./_FormReducer.js";
 import { useSubmitReducer } from "./_SubmitReducer.js";
 
-const FORM_STYLE = "";
+const FORM_STYLE = "block-style";
 
 export const useSurveyLogic = (props) => {
     const [formState, formDispatch] = useFormReducer(props);
