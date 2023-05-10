@@ -6,34 +6,37 @@ import { useSurveyLogic } from "./_SurveyLogic";
 import "../../styles/css/macro-components/survey/Survey.css";
 
 function Survey(props) {
-    const voteLabel = "Vote";
-    const nameLabel = "Name";
-    const reasonLabel = "Reason";
-    const namePadding = `${Number(nameLabel.length) * 1.3}rem`;
-    const votePadding = `${Number(voteLabel.length) * 1.2}rem`;
-    const reasonPadding = `${Number(reasonLabel.length) * 1.1}rem`;
-
     const {
+        consts: {
+            nameLabel,
+            voteLabel,
+            reasonLabel,
+            namePadding,
+            votePadding,
+            reasonPadding,
+            FORM_STYLE,
+        },
         state: {
             formState: { reasonLineCount, isValid },
             submitState: { success, isSubmitting, feedback },
         },
         handlers: {
+            handleKeyDown,
             handleSubmit,
             handleChangeName,
             handleChangeVote,
             handleChangeReason,
-            handleKeyDown,
         },
     } = useSurveyLogic(props);
 
     return (
         <>
             <form
-                className='Survey'
+                className={"Survey"}
                 onSubmit={handleSubmit}
                 data-submitted={success}
                 data-error={success === false}
+                data-style={FORM_STYLE}
             >
                 <p className='instruction'>Please fill out the form below</p>
 

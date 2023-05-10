@@ -2,18 +2,22 @@ import { useAuthorizedApi } from "../../tools/useAuthorizedAPI.js";
 import { useFormReducer } from "./_FormReducer.js";
 import { useSubmitReducer } from "./_SubmitReducer.js";
 
+const FORM_STYLE = "";
+
 export const useSurveyLogic = (props) => {
     const [formState, formDispatch] = useFormReducer(props);
     const [submitState, submitDispatch] = useSubmitReducer();
     const api = useAuthorizedApi();
 
     const _handleAdjustTextarea = ({ target }) => {
-        if (target.scrollHeight > Number(target.style.height.slice(0, -2))) {
-            if (Number(target.style.height.slice(0, -2)) > 0) {
+        let height = Number(target.style.height.slice(0, -2));
+
+        if (target.scrollHeight > height) {
+            if (height > 0) {
                 console.log("adding line...");
                 formDispatch({ type: "INC_REASON_LINE_COUNT" });
             }
-
+            target.style.height = "";
             target.style.height = target.scrollHeight + "px";
         }
 
@@ -59,7 +63,9 @@ export const useSurveyLogic = (props) => {
         },
 
         handleKeyDown: (event) => {
-            if (event.keyCode === 13) event.preventDefault();
+            if (FORM_STYLE !== "block-style") {
+                if (event.keyCode === 13) event.preventDefault();
+            }
         },
 
         handleChangeName: ({ target }) => {
@@ -79,7 +85,29 @@ export const useSurveyLogic = (props) => {
         },
     };
 
+    const consts =
+        FORM_STYLE === "block-style"
+            ? {
+                  voteLabel: "Your Vote",
+                  nameLabel: "Your Name",
+                  reasonLabel: "Your Reason",
+                  namePadding: ``,
+                  votePadding: ``,
+                  reasonPadding: ``,
+                  FORM_STYLE,
+              }
+            : {
+                  voteLabel: "Vote",
+                  nameLabel: "Name",
+                  reasonLabel: "Reason",
+                  namePadding: `${Number("name".length) * 1.3}rem`,
+                  votePadding: `${Number("vote".length) * 1.2}rem`,
+                  reasonPadding: `${Number("reason".length) * 1.1}rem`,
+                  FORM_STYLE,
+              };
+
     return {
+        consts,
         state: { formState, submitState },
         handlers,
     };

@@ -80,7 +80,7 @@
 .Survey .container .inputField input {
   height: 2rem;
 }
-.Survey .container .inputField [name=reason] {
+.Survey .container .inputField textarea {
   padding-top: 0;
   transform: translateY(-1.6rem);
   min-height: calc(var(--lineCount) * 5.2rem);
@@ -157,6 +157,7 @@
   border: none;
   background: none;
   resize: none;
+  caret-color: hsl(133, 40%, 72%);
 }
 .Survey .container .inputField .line {
   background-color: hsla(261, 89%, 75%, 0.25);
@@ -218,6 +219,60 @@
 }
 
 /*** RESPONSIVE ***/
+/*** ALTERNATE STYLES ***/
+.Survey[data-style=block-style] .container {
+  padding: 6rem 3.2rem 4.8rem;
+  gap: 6.4rem;
+}
+.Survey[data-style=block-style] .container .line {
+  display: none;
+}
+.Survey[data-style=block-style] .container .inputField {
+  position: relative;
+  z-index: 1;
+}
+.Survey[data-style=block-style] .container .inputField label {
+  left: -0.8rem;
+  top: -2.88rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+.Survey[data-style=block-style] .container .inputField input,
+.Survey[data-style=block-style] .container .inputField textarea {
+  font-family: "Poppins";
+  font-weight: 300;
+  width: 100%;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+}
+.Survey[data-style=block-style] .container .inputField input,
+.Survey[data-style=block-style] .container .inputField textarea {
+  padding: 0 0.8rem !important;
+}
+.Survey[data-style=block-style] .container .inputField textarea {
+  transform: none;
+  text-indent: 0 !important;
+  min-height: 12rem;
+}
+.Survey[data-style=block-style] .container .inputField::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: calc(100% + 1.6rem);
+  width: calc(100% + 1.6rem);
+  z-index: -1;
+  transform: translate(-50%, -50%);
+  background-color: hsl(262, 12%, 14%);
+  border: 1px solid hsla(261, 14%, 35%, 0);
+  border-radius: 0.4rem;
+  transition: all 0.15s ease;
+}
+.Survey[data-style=block-style] .container .inputField:has(> *:focus)::before {
+  background-color: hsl(262, 14%, 11%);
+  border: 1px solid hsl(261, 14%, 35%);
+}
+
 @keyframes animateLine {
   0% {
     opacity: 0;
