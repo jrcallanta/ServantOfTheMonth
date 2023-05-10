@@ -73,13 +73,13 @@
   top: 0.5rem;
   left: 0.4rem;
 }
-.Survey .container .inputField input,
 .Survey .container .inputField textarea {
   width: 100%;
   line-height: 5.2rem;
 }
 .Survey .container .inputField input {
   height: 2rem;
+  width: 100%;
 }
 .Survey .container .inputField [name=reason] {
   padding-top: 0;
