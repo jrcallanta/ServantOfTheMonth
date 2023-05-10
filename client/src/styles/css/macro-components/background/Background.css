@@ -57,7 +57,7 @@
   transition: opacity 1s ease-out;
 }
 .Background::after {
-  background: radial-gradient(65% 75% at center, hsla(0, 0%, 0%, 0.05) 5%, hsla(0, 0%, 0%, 0.467) 15%, hsla(0, 0%, 0%, 0.8) 65%, hsl(0, 0%, 0%) 80%);
+  background: radial-gradient(65% 75% at center, hsla(0, 0%, 0%, 0.2) 8%, hsla(0, 0%, 0%, 0.467) 15%, hsla(0, 0%, 0%, 0.8) 65%, hsl(0, 0%, 0%) 80%);
 }
 
 /*** RESPONSIVE ***/
