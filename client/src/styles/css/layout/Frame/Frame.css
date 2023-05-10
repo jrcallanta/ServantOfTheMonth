@@ -28,7 +28,7 @@
   align-items: center;
   gap: 8rem;
   padding: 8rem 2rem;
-  height: 100vh;
+  height: 100%;
   overflow: hidden;
   overflow-y: scroll;
 }
