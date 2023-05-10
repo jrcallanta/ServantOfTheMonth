@@ -146,7 +146,7 @@
   animation-fill-mode: backwards;
 }
 .Survey .container {
-  background-color: hsl(258, 16%, 13%);
+  background-color: hsl(262, 14%, 12%);
 }
 .Survey .container .inputField label {
   transition: all 0.5s ease-out;
@@ -189,11 +189,10 @@
   transition: all 0.5s ease;
 }
 .Survey .container .border::before {
-  animation-name: rotate;
   animation-duration: 5s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
-  background: linear-gradient(180deg, hsl(261, 12%, 38%) 0%, hsl(262, 12%, 22%) 25%, hsl(260, 15%, 47%) 60%, hsl(247, 59%, 83%) 100%);
+  background: linear-gradient(-180deg, hsl(261, 12%, 38%) 0%, hsl(262, 12%, 26%) 25%, hsl(260, 15%, 47%) 60%, hsl(247, 59%, 83%) 100%);
 }
 .Survey .feedback {
   animation-name: dissolveFeedback;
@@ -236,6 +235,7 @@
   top: -2.88rem;
   font-size: 1.6rem;
   font-weight: 600;
+  color: hsla(261, 59%, 65%, 0.75);
 }
 .Survey[data-style=block-style] .container .inputField input,
 .Survey[data-style=block-style] .container .inputField textarea {
@@ -244,15 +244,14 @@
   width: 100%;
   font-size: 1.6rem;
   line-height: 2.4rem;
-}
-.Survey[data-style=block-style] .container .inputField input,
-.Survey[data-style=block-style] .container .inputField textarea {
-  padding: 0 0.8rem !important;
+  overflow: visible;
+  box-sizing: content-box;
+  padding: 0.4rem 0.8rem !important;
 }
 .Survey[data-style=block-style] .container .inputField textarea {
   transform: none;
   text-indent: 0 !important;
-  min-height: 12rem;
+  min-height: 20rem;
 }
 .Survey[data-style=block-style] .container .inputField::before {
   content: "";
@@ -263,14 +262,17 @@
   width: calc(100% + 1.6rem);
   z-index: -1;
   transform: translate(-50%, -50%);
-  background-color: hsl(262, 12%, 14%);
+  background-color: hsla(262, 15%, 16%, 0.8);
   border: 1px solid hsla(261, 14%, 35%, 0);
-  border-radius: 0.4rem;
+  box-shadow: 0 0.8rem 0rem hsla(0, 0%, 0%, 0);
   transition: all 0.15s ease;
 }
+.Survey[data-style=block-style] .container .inputField:has(> *:focus) label {
+  color: hsla(261, 62%, 76%, 0.85);
+}
 .Survey[data-style=block-style] .container .inputField:has(> *:focus)::before {
-  background-color: hsl(262, 14%, 11%);
-  border: 1px solid hsl(261, 14%, 35%);
+  border: 1px solid hsl(261, 14%, 45%);
+  box-shadow: 0 0.8rem 1.6rem hsla(0, 0%, 0%, 0.2);
 }
 
 @keyframes animateLine {
