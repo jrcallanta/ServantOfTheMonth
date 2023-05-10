@@ -23,6 +23,7 @@ function Survey(props) {
             handleChangeName,
             handleChangeVote,
             handleChangeReason,
+            handleKeyDown,
         },
     } = useSurveyLogic(props);
 
@@ -75,6 +76,7 @@ function Survey(props) {
                                 textIndent: reasonPadding,
                             }}
                             onChange={handleChangeReason}
+                            onKeyDown={handleKeyDown}
                         />
                         {Array(reasonLineCount)
                             .fill(null)

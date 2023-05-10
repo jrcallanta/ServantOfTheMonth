@@ -79,7 +79,6 @@
 }
 .Survey .container .inputField input {
   height: 2rem;
-  width: 100%;
 }
 .Survey .container .inputField [name=reason] {
   padding-top: 0;
