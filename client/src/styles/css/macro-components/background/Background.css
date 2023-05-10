@@ -45,7 +45,7 @@
 }
 .Background[data-animate=true] {
   animation-name: stretch;
-  animation-duration: 10s;
+  animation-duration: 6s;
   animation-iteration-count: infinite;
   animation-direction: alternate;
   animation-fill-mode: both;
@@ -66,6 +66,6 @@
     transform: scale(1.2, 1);
   }
   100% {
-    transform: scale(1, 1.25) rotateY(35deg);
+    transform: scale(1, 1.25);
   }
 }
