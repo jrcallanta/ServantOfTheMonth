@@ -10,7 +10,7 @@ const router = Router();
 router.use(json());
 
 /*** Attach User Controllers ***/
-router.get("/", UserController.getUsers);
+// router.get("/", UserController.getUsers);
 router.post("/", UserValidator.onCreateUser, UserController.createUser);
 
 /*** Attach Protected User Controllers ***/
