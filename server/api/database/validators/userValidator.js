@@ -1,3 +1,5 @@
+import { hash } from "../../tools/customBCrypt.js";
+
 /***************************
  * Validator called to verify and
  * sanatize inputs before creating
@@ -5,6 +7,16 @@
  */
 export const onCreateUser = async (req, res, next) => {
     console.log("[UserValidator.onCreateUser]:");
+
+    if (!req.body.password || !req.body.name || !req.body.email)
+        res.status(422).send({
+            message:
+                "The inputs give were invalid. Please give a name, email, and password",
+            error: "InvalidInputError",
+        });
+
+    req.body.hash = hash(req.body.password);
+    req.body.password = undefined;
     next();
 };
 
@@ -20,7 +32,7 @@ export const onEditUser = async (req, res, next) => {
     if (changes.length === 0) throw new Error("No changes given");
 
     if (req.body.password) {
-        req.body.hash = req.body.password;
+        req.body.hash = hash(req.body.password);
         req.body.password = undefined;
     }
     next();

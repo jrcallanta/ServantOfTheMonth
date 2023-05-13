@@ -5,6 +5,7 @@ import { connect } from "../data.js";
 import { sign, verify } from "../../tools/customJWT.js";
 import User from "../models/userModel.js";
 import Session from "../models/sessionModel.js";
+import { compare } from "../../tools/customBCrypt.js";
 
 /***************************
  * Controller called to attempt
@@ -16,7 +17,6 @@ export const loginWithCredentials = async (req, res, next) => {
     await connect(res);
 
     const { id, hash } = req.body;
-    // console.log(id, hash);
 
     try {
         const user = await User.findById(`${id}`);
@@ -27,7 +27,7 @@ export const loginWithCredentials = async (req, res, next) => {
             });
         }
 
-        if (user.hash !== hash) {
+        if (!compare(hash, user.hash)) {
             return res.status(401).send({
                 message: "The password did not match.",
                 error: "InvalidPasswordError",

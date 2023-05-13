@@ -1,7 +1,7 @@
 import { connect } from "../data.js";
-import jwt from "jsonwebtoken";
 import User from "../models/userModel.js";
-import { sign, verify } from "../../tools/customJWT.js";
+import { verify } from "../../tools/customJWT.js";
+import { hash, compare } from "../../tools/customBCrypt.js";
 
 /***************************
  * Controller called to retrieve
@@ -94,41 +94,6 @@ export const editUser = async (req, res, next) => {
  */
 export const deleteUser = async (req, res, next) => {
     console.log("[UserController.deleteUser]:");
-};
-
-/***************************
- * Controller called to attempt
- * a login for an existing user
- * using client-side stored token.
- */
-export const loginWithToken = async (req, res, next) => {
-    console.log("[UserController.loginWithToken]:");
-    await connect(res);
-
-    try {
-        const { accessToken } = req.cookies;
-        const { currentUser } = verify(accessToken);
-
-        const user = await User.findById(currentUser.id);
-        if (!user) throw new Error("No user found");
-
-        let tokenIsInvalid =
-            !currentUser ||
-            currentUser.id !== user.id ||
-            currentUser.hash !== user.hash;
-
-        if (tokenIsInvalid) throw new Error("Token is invalid");
-
-        return res.status(200).send({
-            message: "Succesfully signed into user",
-            currentUser: user.publicProjection,
-        });
-    } catch (error) {
-        return res.status(500).send({
-            message: "There was an error",
-            error: error.message,
-        });
-    }
 };
 
 export default {
