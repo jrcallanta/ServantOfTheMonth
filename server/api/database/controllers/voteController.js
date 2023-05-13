@@ -27,7 +27,7 @@ export const getVotes = async (req, res, next) => {
 export const getVotesByMonth = async (req, res, next) => {
     console.log("[VoteController.getVotesByMonth]:");
     await connect(res);
-    // await fillDummyData(1 + Math.floor(Math.random() * 20));
+    // await fillDummyData(1 + Math.floor(Math.random() * 60));
 
     const { month, year } = req.params;
     let allVotes = !year
