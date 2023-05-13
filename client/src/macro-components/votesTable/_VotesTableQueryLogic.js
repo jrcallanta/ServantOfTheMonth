@@ -131,7 +131,7 @@ const _sorter = (list, { sort, direction }) => {
 
         if (v1 < v2) return 1 * direction;
         if (v1 > v2) return -1 * direction;
-        else return 0;
+        else return voterComparator(vote1, vote2);
     };
 
     const voterComparator = (vote1, vote2) => {
@@ -140,7 +140,7 @@ const _sorter = (list, { sort, direction }) => {
 
         if (v1 < v2) return 1 * direction;
         if (v1 > v2) return -1 * direction;
-        else return 0;
+        else return dateComparator(vote2, vote1);
     };
 
     const dateComparator = (vote1, vote2) => {
