@@ -72,7 +72,7 @@ export const fillDummyData = async (count) => {
             };
         });
 
-    return;
+    // return;
 
     await Promise.all(
         votes.map(async (vote) => {
