@@ -9,9 +9,17 @@ mongoose.set("strictQuery", false);
  */
 export const connect = async (res) => {
     try {
-        const uri = Boolean(process.env.DEV_MODE)
-            ? "mongodb://localhost:27017/sotmDB"
-            : `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.9xwkr8c.mongodb.net/sotmDB`;
+        console.log(
+            `[devmode=${process.env.DEV_MODE === "true"}], `,
+            process.env.DEV_MODE === "true"
+                ? "using local db..."
+                : "using cloud db..."
+        );
+
+        const uri =
+            process.env.DEV_MODE === "true"
+                ? "mongodb://localhost:27017/sotmDB"
+                : `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.9xwkr8c.mongodb.net/sotmDB`;
 
         const connection = mongoose
             .connect(uri, {

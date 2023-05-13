@@ -21,8 +21,10 @@ export const onLoginWithCredentials = (req, res, next) => {
  */
 export const onSingleUserLogin = (req, res, next) => {
     console.log("[SessionValidator.onSingleUserLogin]:");
-    // req.body.id = "6413ee37e5b58c9e01bed2a4"; // Local ID of default User
-    req.body.id = String(process.env.SINGLE_ADMIN_ID); // ID of default User
+    req.body.id =
+        process.env.DEV_MODE === "true"
+            ? String(process.env.SINGLE_ADMIN_ID_LOCAL)
+            : String(process.env.SINGLE_ADMIN_ID_CLOUD);
     req.body.hash = req.body.password;
     req.body.password = undefined;
     next();
